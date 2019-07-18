@@ -1,0 +1,18 @@
+gephi9.2 win+mac版和java64位win版
+
+链接：https://pan.baidu.com/s/1N6WEoqDvljNsgzdQuUy_Pg 
+提取码：j9fg 
+
+
+
+
+
+
+
+ps：java官网在此，以防大家需要
+
+安装好gephi后需要安装java，同样是官网免费下，一键安装：
+https://www.java.com/zh_CN/
+
+如果你不是64位系统，可以安装kit，里面包括了java：
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html

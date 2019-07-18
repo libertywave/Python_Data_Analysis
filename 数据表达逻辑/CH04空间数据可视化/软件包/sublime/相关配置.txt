@@ -1,0 +1,7 @@
+{
+	"cmd": ["C:/ProgramData/Anaconda2/python.exe","-u","$file"],
+	"file_regex": "^[ ]*File \"(...*?)\", line([0-9]*)",
+	"selector": "source.python",
+	"encoding": "cp936",
+	"encoding": "utf-8",
+}

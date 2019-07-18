@@ -1,0 +1,14 @@
+1、Force atlas
+http://www.doc88.com/p-9793455093973.html
+https://gephi.wordpress.com/tag/force-atlas/
+
+2、Fruchterman reingold
+http://citeseer.ist.psu.edu/viewdoc/download;jsessionid=19A8857540E8C9C26397650BBACD5311?doi=10.1.1.13.8444&rep=rep1&type=pdf
+https://github.com/gephi/gephi/wiki/Fruchterman-Reingold
+
+3、OpenOrd下蕉
+https://gephi.wordpress.com/2010/11/05/openord-new-layout-plugin-the-fastest-algorithm-so-far/
+https://github.com/gephi/gephi/wiki/OpenOrd
+
+4、Yifan Hu下蕉
+http://yifanhu.net/PUB/graph_draw_small.pdf

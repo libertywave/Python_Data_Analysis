@@ -1,0 +1,8 @@
+gephi下载，请在官网下载最新安装包，免费的：
+https://gephi.org/users/download/
+
+安装好gephi后需要安装java，同样是官网免费下，一键安装：
+https://www.java.com/zh_CN/
+
+如果你不是64位系统，可以安装kit，里面包括了java：
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html

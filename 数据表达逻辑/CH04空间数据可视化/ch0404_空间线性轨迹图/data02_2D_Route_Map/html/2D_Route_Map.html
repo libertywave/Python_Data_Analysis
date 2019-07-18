@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>2DRoutesMap - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../js/echarts.js"></script>
+        <script src="../js/echarts-gl.min.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bmap.min.js"></script>
+        <script src="../data/data.js"></script>
+        <script src="../set/settings.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=L1gyDQb7Dx8YpXVcVly71IHK8GfpCV9d"></script>
+        <script>
+
+            var myChart = echarts.init(document.getElementById('main'));
+
+            console.log(data);
+
+            if(colorOrWidth == 0){
+                var lines2 = data.features.map(function(theD){
+                    return{
+                        coords:theD.geometry.coordinates
+                    }
+                })
+            };
+
+            if(colorOrWidth == 1){
+                var lines2 = data.features.map(function(theD){
+                    return{
+                        coords:theD.geometry.coordinates,
+                        lineStyle:{
+                            normal:{
+                                color: theColorRamp[theD.properties.value-1],
+                            }
+                        }
+                    }
+                })
+            }
+
+            if(colorOrWidth == 2){
+                var lines2 = data.features.map(function(theD){
+                    return{
+                        coords:theD.geometry.coordinates,
+                        lineStyle:{
+                            normal:{
+                                width: theD.properties.value * theWidthRatio,
+                            }
+                        }
+                    }
+                })
+            }
+
+            if(colorOrWidth == 3){
+                var lines2 = data.features.map(function(theD){
+                    return{
+                        coords:theD.geometry.coordinates,
+                        lineStyle:{
+                            normal:{
+                                color: theColorRamp[theD.properties.value-1],
+                                width: theD.properties.value * theWidthRatio
+                            }
+                        }
+                    }
+                })
+            }
+
+
+            myChart.setOption(option = {
+                bmap: {
+                    center: theCenter,
+                    zoom: theZoom,
+                    roam: true,
+                    mapStyle: {
+                      'styleJson': mapStyle
+                    }
+                },
+                series: [{
+                    type: 'lines',
+                    coordinateSystem: 'bmap',
+                    polyline: true,
+                    data: lines2,
+                    silent: true,
+                    lineStyle: {
+                        normal: {
+                            // color: '#c23531',
+                            color: theColor,
+                            opacity: theOpac,
+                            width: theWidth
+                        }
+                    },
+                    progressiveThreshold: 500,
+                    progressive: 200
+                }, {
+                    type: 'lines',
+                    coordinateSystem: 'bmap',
+                    polyline: true,
+                    data: lines2,
+                    lineStyle: {
+                        normal: {
+                            width: 0
+                        }
+                    },
+                    effect: {
+                        period: thePeriod,
+                        constantSpeed: theSpeed,
+                        show: effectShow,
+                        trailLength: theEffLength,
+                        symbolSize: theEffWidth
+                    },
+                    zlevel: 1
+                }]
+            });
+
+        </script>
+    </body>
+</html>

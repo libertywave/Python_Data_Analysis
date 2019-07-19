@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bar3DMap - ECHARTS-GL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
+        <link rel="stylesheet" href="../css/common.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="../js/echarts.js"></script>
+        <script src="../js/echarts-gl.min.js"></script>
+        <script src="../js/mapbox-gl.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../data/data.js" ></script>
+        <script src="../set/settings.js" ></script>
+
+        <script>
+
+            var myChart = echarts.init(document.getElementById('main'));
+            mapboxgl.accessToken = mapAccessToken;
+
+            data = data.map(function(theD){
+                return({
+                    name: theD['name'],
+                    value: [theD['lng'],theD['lat'],theD['value']]
+                    }
+                )
+            })
+            console.log(data);
+
+            var themax = 0;
+
+            data.map(function(theD){themax = Math.max(themax,theD.value[2]);})
+            console.log(themax);
+
+            var option = {
+                visualMap: {
+                    show: true,
+                    inRange: {
+                        color: colorRamp
+                    },
+                    outOfRange: {
+                        colorAlpha: 0
+                    },
+                    max: themax,
+                },
+                mapbox: {
+                    center: theCenter,
+                    zoom: theZoom,
+                    pitch: thePitch,
+                    bearing: theBear,
+                    style: mapStyle,
+                    boxHeight: 20,
+                    // altitudeScale: 3e2,
+                    postEffect: {
+                        enable: true,
+                        SSAO: {
+                            enable: true,
+                            radius: 2,
+                            intensity: 1.5
+                        }
+                    },
+                    light: {
+                        main: {
+                            intensity: 0.5,
+                            shadow: theShadow,
+                            shadowQuality: 'high',
+                            alpha: theAlpha,
+                            beta: theBeta
+                        },
+                        ambient: {
+                            intensity: 0.2
+                        },
+                        ambientCubemap: {
+                            texture: '/asset/get/s/data-1491896094618-H1DmP-5px.hdr',
+                            exposure: 1,
+                            diffuseIntensity: 0.5
+                        }
+                    }
+                },
+                series: [{
+                    type: 'bar3D',
+                    shading: 'realistic',
+                    coordinateSystem: 'mapbox',
+                    bevelSize: barCorner,
+                    barSize:barSize,
+                    silent: true,
+                    data: data,
+                    itemStyle:{
+                      opacity: theOpac
+                    }
+
+                }]
+            };
+
+            myChart.setOption(option);
+
+
+        </script>
+    </body>
+</html>

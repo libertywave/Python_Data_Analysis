@@ -1,6 +1,5 @@
 # Python_Data_Analysis
-网易云微专业数据分析
-分为以下几个部分
+利用Python数据分析
 - 基础Python知识
 - 必备库掌握Nmupy，Pandas，Matplotlib，Seaborn，Bokeh
 - 结合图表各类分析方法,其中包括空间数据可视化
